@@ -13,11 +13,11 @@ const Navbar = () => {
             <div className="container">
                 <div className="left">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/NewNetflixLogo.png"/>
-                    <span>Homepage</span>
-                    <span>Series</span>
-                    <span>Moives</span>
-                    <span>New and Popular</span>
-                    <span>My List</span>
+                    <span>홈</span>
+                    <span>시리즈</span>
+                    <span>영화</span>
+                    <span>New! 요즘 대세 콘텐츠</span>
+                    <span>내가 찜한 콘텐츠</span>
                 </div>
                 <div className="right">
                     <Search className="icon"/>
