@@ -29,9 +29,9 @@ const Featured = ({type}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src="http://placekitten.com/1000/1000"/>
+            <img width="100%" src="https://upload.wikimedia.org/wikipedia/commons/d/db/2019-08-04_-_Netflix.jpg"/>
             <div className="info">
-                <img src="http://placekitten.com/500/500" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Squid_Game_logo_%28Korean%29.png" />
                 <span className="desc">
                     Lorem ipsum dolor,  sit amet consectetur adipisicing elit. Iusto magnam similique iste dolor vitae voluptatibus facere quam quasi, voluptates eius fugiat quis nihil ex accusamus eveniet temporibus enim dignissimos natus.
                 </span>
