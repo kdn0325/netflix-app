@@ -36,6 +36,12 @@ const List = () => {
                     <ListItem index={7}/>
                     <ListItem index={8}/>
                     <ListItem index={9}/>
+                    <ListItem index={10}/>
+                    <ListItem index={11}/>
+                    <ListItem index={12}/>
+                    <ListItem index={13}/>
+                    <ListItem index={14}/>
+                    <ListItem index={15}/>
                 </div>
                 <ArrowForwardIosOutlined className="sliderArrow right"onClick={()=>handClick('right')}/>
             </div>
