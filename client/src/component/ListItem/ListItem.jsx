@@ -1,36 +1,56 @@
 import { PlayArrow,Add, ThumbUpAltOutlined,ThumbDownAltOutlined } from '@material-ui/icons';
-import React,{useState} from 'react';
+import axios from 'axios';
+import React,{useEffect, useState} from 'react';
+import { Link } from 'react-router-dom';
 import "../ListItem/ListItem.scss";
 
-const ListItem = ({index}) => {
+const ListItem = ({index,item}) => {
     const [isHovered,setHovered]=useState(false);
-    const trailer = "https://upload.wikimedia.org/wikipedia/commons/d/d0/Caminandes-_Llama_Drama_-_Short_Movie.ogv"
+    const [movie,setMovie]=useState({});
+    useEffect(()=>{
+        const getMovie = async ()=>{
+            try{
+            const res = await axios.get("movies/find"+movie,
+            {
+                headers:{
+                    token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDc3YjBmZGYwYjZlM2EwZDA0MjUyYSIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDc0Nzk0OSwiZXhwIjoxNjQ1MTc5OTQ5fQ.7ai-3Zi177GVd6AKqV-04_sgHJ94s0JLe-fQ7c7Ye4w"
+                }
+            });
+            setMovie(res.data)
+            }catch(err){
+                console.log(err);
+            }
+        };
+        getMovie()
+    },[item])
     return (
-        <div className="listitem" style={{left:isHovered && index *225-50+index*2.5}} onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Title_screen_for_the_Netflix_series%2C_Kingdom.png" alt="" />
-            {isHovered &&(
-            <div>
-                <video src={trailer} autoPlay={true} loop></video>
-                <div className="itemInfo">
-                    <div className="icons">
-                        <PlayArrow className="icon"/>
-                        <Add className="icon"/>
-                        <ThumbUpAltOutlined className="icon"/>
-                        <ThumbDownAltOutlined className="icon"/>
+        <Link to={{pathname:"/watch",movie:movie}}>
+            <div className="listitem" style={{left:isHovered && index *225-50+index*2.5}} onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
+                <img src={movie.img} alt="" />
+                {isHovered &&(
+                <div>
+                    <video src={movie.trailer} autoPlay={true} loop></video>
+                    <div className="itemInfo">
+                        <div className="icons">
+                            <PlayArrow className="icon"/>
+                            <Add className="icon"/>
+                            <ThumbUpAltOutlined className="icon"/>
+                            <ThumbDownAltOutlined className="icon"/>
+                        </div>
+                        <div className="itemInfoTop">
+                            <span>{movie.duration}</span>
+                            <span className="limit">{movie.limit}</span>
+                            <span>{movie.year}</span>
+                        </div>
+                        <div className="desc">
+                            {movie.desc}
+                        </div>
+                        <div className="genre">{movie.genre}</div>
                     </div>
-                    <div className="itemInfoTop">
-                        <span>1 hour 14 mins</span>
-                        <span className="limit">+16</span>
-                        <span>1999</span>
-                    </div>
-                    <div className="desc">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda quo neque explicabo nisi quibusdam cumque sequi sed impedit iste atque. Delectus magnam cupiditate porro eum quam recusandae maiores eius ex.
-                    </div>
-                    <div className="genre">Action</div>
                 </div>
+                )}
             </div>
-            )}
-        </div>
+        </Link>
     )
 }
 
