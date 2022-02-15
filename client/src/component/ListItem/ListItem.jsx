@@ -10,13 +10,13 @@ const ListItem = ({index,item}) => {
     useEffect(()=>{
         const getMovie = async ()=>{
             try{
-            const res = await axios.get("movies/find"+movie,
-            {
-                headers:{
-                    token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDkxODAyNSwiZXhwIjoxNjQ1MzUwMDI1fQ.DWdDJmcxOwMzPwPnlDAnmZUTM2HnbNCQR5ZUpGSASWY"
-                }
-            });
-            setMovie(res.data)
+                const res = await axios.get("movies/find"+movie,
+                {
+                    headers:{
+                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
+                    },
+                });
+                setMovie(res.data)
             }catch(err){
                 console.log(err);
             }
@@ -26,7 +26,7 @@ const ListItem = ({index,item}) => {
     return (
         <Link to={{pathname:"/watch",movie:movie}}>
             <div className="listitem" style={{left:isHovered && index *225-50+index*2.5}} onMouseEnter={()=>{setHovered(true)}} onMouseLeave={()=>{setHovered(false)}}>
-                <img src={movie.img} alt="" />
+                <img src={movie?.img} alt="" />
                 {isHovered &&(
                 <div>
                     <video src={movie.trailer} autoPlay={true} loop></video>

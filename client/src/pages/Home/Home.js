@@ -7,7 +7,7 @@ import axios from 'axios';
 
 const Home = ({type}) => {
     const [lists,setLists] = useState([]);
-    const [genre,setGenre] = useState([null]);
+    const [genre,setGenre] = useState(null);
     
     useEffect(()=>{
         const getRandomLists = async ()=>{
@@ -16,12 +16,11 @@ const Home = ({type}) => {
                     `lists${type ? "?type="+type: ""}${genre ? "&genre="+ genre : ""}`,
                     {
                         headers:{
-                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDkxODAyNSwiZXhwIjoxNjQ1MzUwMDI1fQ.DWdDJmcxOwMzPwPnlDAnmZUTM2HnbNCQR5ZUpGSASWY"
+                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
                         }
                     }
                 )
-                console.log(res);
-                // setLists(res.data)
+                setLists(res.data)
             }catch(err){
                 console.log(err);
             }
@@ -31,7 +30,7 @@ const Home = ({type}) => {
     return (
         <div className="home">
             <Navbar/>
-            <Featured type={type}/>
+            <Featured type={type} setGenre={setGenre}/>
             {lists.map((list)=>(
                 <List list={list}/>
             ))}

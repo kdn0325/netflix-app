@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const List = require("../models/List");
-const Movie = require("../models/List");
 const verify = require("../VerifyToken");
 
 
