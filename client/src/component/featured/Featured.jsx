@@ -1,8 +1,28 @@
 import { InfoOutlined, PlayArrow } from '@material-ui/icons';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import "./Featured.scss";
 
 const Featured = ({type}) => {
+    const [content,setContent] = useState({});
+
+    useEffect(()=>{
+        const getRandomContent = async ()=>{
+            try{
+                const res = await axios.get(`/movies/random?type=${type}`,
+                {
+                    headers:{
+                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDkxODAyNSwiZXhwIjoxNjQ1MzUwMDI1fQ.DWdDJmcxOwMzPwPnlDAnmZUTM2HnbNCQR5ZUpGSASWY"
+                    }
+                }
+                );
+                setContent(res.data[0]);
+            }catch(err){
+                console.log(err);
+            }
+        }
+        getRandomContent();
+    },[type])
     return (
         <div className="featured">
             {type && (
@@ -29,11 +49,11 @@ const Featured = ({type}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src="https://upload.wikimedia.org/wikipedia/commons/d/db/2019-08-04_-_Netflix.jpg"/>
+            <img width="100%" src={content.img}/>
             <div className="info">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Squid_Game_logo_%28Korean%29.png" />
+                <img src={content.imgTitle}/>
                 <span className="desc">
-                    Lorem ipsum dolor,  sit amet consectetur adipisicing elit. Iusto magnam similique iste dolor vitae voluptatibus facere quam quasi, voluptates eius fugiat quis nihil ex accusamus eveniet temporibus enim dignissimos natus.
+                    {content.desc}
                 </span>
                 <div className="buttons">  
                     <button className="play">

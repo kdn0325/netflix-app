@@ -8,17 +8,19 @@ import axios from 'axios';
 const Home = ({type}) => {
     const [lists,setLists] = useState([]);
     const [genre,setGenre] = useState([null]);
-
+    
     useEffect(()=>{
         const getRandomLists = async ()=>{
             try{
-                const res = await axios.get(`lists${type ? "?type="+type: ""}${genre && "genre="+""}`,
+                const res = await axios.get(
+                    `lists${type ? "?type="+type: ""}${genre ? "&genre="+ genre : ""}`,
                     {
                         headers:{
-                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDc3YjBmZGYwYjZlM2EwZDA0MjUyYSIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDc0Nzk0OSwiZXhwIjoxNjQ1MTc5OTQ5fQ.7ai-3Zi177GVd6AKqV-04_sgHJ94s0JLe-fQ7c7Ye4w"
+                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDkxODAyNSwiZXhwIjoxNjQ1MzUwMDI1fQ.DWdDJmcxOwMzPwPnlDAnmZUTM2HnbNCQR5ZUpGSASWY"
                         }
                     }
-                );
+                )
+                console.log(res);
                 // setLists(res.data)
             }catch(err){
                 console.log(err);

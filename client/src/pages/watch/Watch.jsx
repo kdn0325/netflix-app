@@ -1,15 +1,21 @@
 import { ArrowBackOutlined } from '@material-ui/icons'
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import "./Watch.scss"
+import { Link } from 'react-router-dom';
 
 const Watch = () => {
+    const location = useLocation()
+    const movie = location.movie;
     return (
         <div className="watch">
-            <div className="back">
-                <ArrowBackOutlined/>
-                Home
-            </div>
-            <video className="video" autoPlay progress controls src="https://upload.wikimedia.org/wikipedia/commons/d/d0/Caminandes-_Llama_Drama_-_Short_Movie.ogv"></video>
+            <Link to="/">
+                <div className="back">
+                    <ArrowBackOutlined/>
+                    Home
+                </div>
+            </Link>
+            <video className="video" autoPlay progress controls src={movie.video}></video>
         </div>
     )
 }
