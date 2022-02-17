@@ -7,7 +7,7 @@ const List = ({list}) => {
     const [isMoved,setIsMoved] =useState(false)
     const [slideNumber,setSlideNumber] =useState(0)
     const listRef= useRef()
-    const handClick= (direction)=>{
+    const handleClick= (direction)=>{
         setIsMoved(true)
         let distance = listRef.current.getBoundingClientRect().x -50
         if(direction==="left" && slideNumber>0){
@@ -21,18 +21,25 @@ const List = ({list}) => {
     }
     return (
         <div className="list">
-            <span className="listTitle">{list.title}</span>
-            <div className="wrapper">
-                <ArrowBackIosOutlined className="sliderArrow left" onClick={()=>handClick('left')} style={{display:!isMoved && "none"}}/>
-                <div className="container" ref={listRef}>
-                    {list.content.map((item,i)=>(
-                        <ListItem index={i} item={item}/>
-                    ))}
-                </div>
-                <ArrowForwardIosOutlined className="sliderArrow right"onClick={()=>handClick('right')}/>
+          <span className="listTitle">{list.title}</span>
+          <div className="wrapper">
+            <ArrowBackIosOutlined
+              className="sliderArrow left"
+              onClick={() => handleClick("left")}
+              style={{ display: !isMoved && "none" }}
+            />
+            <div className="container" ref={listRef}>
+              {list.content.map((item, i) => (
+                <ListItem index={i} item={item} />
+              ))}
             </div>
+            <ArrowForwardIosOutlined
+              className="sliderArrow right"
+              onClick={() => handleClick("right")}
+            />
+          </div>
         </div>
-    )
-}
+      );
+    }
 
 export default List
