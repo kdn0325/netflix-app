@@ -10,7 +10,7 @@ const ListItem = ({item,index}) => {
     useEffect(() => {
         const getMovie = async () => {
         try{
-            const res = await axios.get("/movies/find/" + item, {
+            const res = await axios.get("/movies/find/"+item,{
                 headers: {
                     token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
                 },
@@ -23,30 +23,30 @@ const ListItem = ({item,index}) => {
         getMovie();
       }, [item]);
     return (
-        <Link to={{ pathname: "/watch", movie: movie }}>
-            <div className="listItem" style={{ left: isHovered && index * 225 - 50 + index * 2.5 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-            <img src={movie?.img} alt="" />
-        {isHovered && (
-          <>
-            <video src={movie.trailer} autoPlay={true} loop />
-            <div className="itemInfo">
-              <div className="icons">
-                <PlayArrow className="icon" />
-                <Add className="icon" />
-                <ThumbUpAltOutlined className="icon" />
-                <ThumbDownOutlined className="icon" />
+        <Link to ={{ pathname:"/watch", movie: movie }}>
+          <div className="listItem" style={{ left: isHovered && index * 225 - 50 + index * 2.5 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+              <img src={movie.img} alt={movie.title}/>
+          {isHovered && (
+            <>
+              <video src={movie.trailer} autoPlay={true} loop />
+              <div className="itemInfo">
+                <div className="icons">
+                  <PlayArrow className="icon" />
+                  <Add className="icon" />
+                  <ThumbUpAltOutlined className="icon" />
+                  <ThumbDownOutlined className="icon" />
+                </div>
+                <div className="itemInfoTop">
+                  <span>{movie.duration}</span>
+                  <span className="limit">+{movie.limit}</span>
+                  <span>{movie.year}</span>
+                </div>
+                <div className="desc">{movie.desc}</div>
+                <div className="genre">{movie.genre}</div>
               </div>
-              <div className="itemInfoTop">
-                <span>{movie.duration}</span>
-                <span className="limit">+{movie.limit}</span>
-                <span>{movie.year}</span>
-              </div>
-              <div className="desc">{movie.desc}</div>
-              <div className="genre">{movie.genre}</div>
-            </div>
-          </>
-        )}
-      </div>
+            </>
+          )}
+        </div>
     </Link>
   );
 }
