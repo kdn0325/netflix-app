@@ -14,7 +14,7 @@ const Watch = () => {
                     <ArrowBackOutlined/>
                     Home
                 </div>
-                <video className="video" autoPlay progress controls src={movie?.video}></video>
+                <video className="video" autoPlay progress controls src={movie?.video}/>
             </Link>
         </div>
     )

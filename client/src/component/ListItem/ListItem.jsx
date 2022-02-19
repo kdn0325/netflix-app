@@ -2,11 +2,12 @@ import { PlayArrow,Add, ThumbUpAltOutlined,ThumbDownOutlined} from '@material-ui
 import axios from 'axios';
 import React,{useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import "../ListItem/ListItem.scss";
+import "./ListItem.scss";
 
-const ListItem = ({item,index}) => {
+const ListItem = ({index,item}) => {
     const [isHovered,setIsHovered]=useState(false);
     const [movie,setMovie]=useState({});
+    
     useEffect(() => {
         const getMovie = async () => {
         try{
@@ -16,6 +17,7 @@ const ListItem = ({item,index}) => {
                 },
             });
             setMovie(res.data);
+            console.log(movie);
             }catch (err) {
                 console.log(err);
             }
@@ -24,9 +26,9 @@ const ListItem = ({item,index}) => {
       }, [item]);
     return (
         <Link to ={{ pathname:"/watch", movie: movie }}>
-          <div className="listItem" style={{ left: isHovered && index * 225 - 50 + index * 2.5 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-              <img src={movie.img} alt={movie.title}/>
-          {isHovered && (
+          <div className="listitem" style={{ left: isHovered && index * 225 - 50 + index * 2.5 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
+              <img src={movie?.imgsm} alt={movie?.title}/>
+              {isHovered && (
             <>
               <video src={movie.trailer} autoPlay={true} loop />
               <div className="itemInfo">
