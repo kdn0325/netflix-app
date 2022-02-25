@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import "./list.css";
-import { Publish } from "@material-ui/icons";
 
 export default function List() {
   const location = useLocation();
@@ -9,7 +8,7 @@ export default function List() {
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">List</h1>
-        <Link to="/newList">
+        <Link to="/newlist">
           <button className="productAddButton">Create</button>
         </Link>
       </div>

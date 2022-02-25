@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getListsStart,getListsSuccess,getListsFailure,deleteListStart,deleteListSuccess,deleteListFailure} from "./ListAction";
+import {getListsStart,getListsSuccess,getListsFailure,deleteListStart,deleteListSuccess,deleteListFailure, createListstart, createListSuccess, createListFailure} from "./ListAction";
 
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
@@ -16,19 +16,19 @@ export const getLists = async (dispatch) => {
 };
 
 // create
-// export const createList = async (movie, dispatch) => {
-//   dispatch(createMovieStart());
-//   try {
-//     const res = await axios.post("/movies", movie, {
-//       headers: {
-//         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-//       },
-//     });
-//     dispatch(createMovieSuccess(res.data));
-//   } catch (err) {
-//     dispatch(createMovieFailure());
-//   }
-// };
+export const createList = async (list, dispatch) => {
+  dispatch(createListstart());
+  try {
+    const res = await axios.post("/lists", list, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
+    dispatch(createListSuccess(res.data));
+  } catch (err) {
+    dispatch(createListFailure());
+  }
+};
 
 //delete
 export const deleteList = async (id, dispatch) => {

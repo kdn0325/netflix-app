@@ -13,6 +13,8 @@ import Login from "./pages/login/Login";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext/AuthContext";
 import ListList from "./pages/listList/listList";
+import List from "./pages/list/List";
+import NewList from "./pages/newList/NewList";
 
 
 function App() {
@@ -25,7 +27,7 @@ function App() {
         </Route>
         {user &&
         <>
-      <Topbar />
+      <Topbar/>
       <div className="container">
         <Sidebar />
           <Route exact path="/">
@@ -52,12 +54,12 @@ function App() {
           <Route path="/lists">
             <ListList/>
           </Route>
-          {/* <Route path="/list/:listId">
-            <Product />
+          <Route path="/list/:listId">
+            <List/>
           </Route>
           <Route path="/newlist">
-            <NewProduct />
-          </Route> */}
+            <NewList/>
+          </Route>
       </div>
       </>
       }
