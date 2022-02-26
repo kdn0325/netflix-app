@@ -5,7 +5,9 @@ import { Publish } from "@material-ui/icons";
 export default function Product() {
     const location = useLocation();
     const movie = location.movie;
-;  return (
+    console.log(movie)
+
+    return (
     <div className="product">
       <div className="productTitleContainer">
         <h1 className="productTitle">Movie</h1>
@@ -16,7 +18,7 @@ export default function Product() {
       <div className="productTop">
           <div className="productTopRight">
               <div className="productInfoTop">
-                  <img src={movie.img} alt="" className="productInfoImg" />
+                  <img src={movie.img} alt={movie.title} className="productInfoImg" />
                   <span className="productName">{movie.title}</span>
               </div>
               <div className="productInfoBottom">

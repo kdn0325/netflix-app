@@ -1,7 +1,7 @@
 import { axios } from 'axios';
 import React,{useState,useRef} from 'react'
 import "./Register.scss"
-import {useNavigate} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 
 const Register = () => {
     const [email,setEmail]=useState("");
@@ -10,7 +10,7 @@ const Register = () => {
     const emailRef =useRef();
     const passwordRef =useRef();
     const usernameRef =useRef();
-    const navigate = useNavigate();
+    const history = useHistory();
     const handleStart =()=>{
         setEmail(emailRef.current.value)
     }
@@ -20,7 +20,7 @@ const Register = () => {
         setUsername(usernameRef.current.value)
         try{
             await axios.post("auth/register", {email,username,password});
-            navigate("/login");
+            history.push("/login");
         }catch(err){}
     }
     return (
