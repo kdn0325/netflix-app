@@ -7,13 +7,14 @@ import "./ListItem.scss";
 const ListItem = ({index,item}) => {
     const [isHovered,setIsHovered]=useState(false);
     const [movie,setMovie]=useState({});
+    console.log(item)
     
     useEffect(() => {
         const getMovie = async () => {
         try{
             const res = await axios.get("/movies/find/"+item,{
                 headers: {
-                  token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
+                  token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTlkMzBkNDkzNGY2ZThlMTRjODcyZCIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTg1OTYxNSwiZXhwIjoxNjQ2MjkxNjE1fQ.Q4fv1xlxme-0JzHfE11VvH5Al38ZWqylYZ6aXNcuwJg"
                 },
             });
             setMovie(res.data);
@@ -24,9 +25,9 @@ const ListItem = ({index,item}) => {
         getMovie();
       }, [item]);
     return (
-        <Link to ={{ pathname:"/watch", movie: movie }}>
+        <Link to ={{ pathname:"/watch",movie:movie}}>
           <div className="listitem" style={{ left: isHovered && index * 225 - 50 + index * 2.5 }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-              <img src={movie?.imgsm} alt={movie?.title}/>
+              <img src={movie?.imgsm} alt={movie.title}/>
               {isHovered && (
             <>
               <video src={movie.trailer} autoPlay={true} loop />

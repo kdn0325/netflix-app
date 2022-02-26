@@ -12,7 +12,7 @@ const Featured = ({type,setGenre}) => {
                 const res = await axios.get(`/movies/random?type=${type}`,
                 {
                     headers:{
-                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
+                        token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTlkMzBkNDkzNGY2ZThlMTRjODcyZCIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTg1OTYxNSwiZXhwIjoxNjQ2MjkxNjE1fQ.Q4fv1xlxme-0JzHfE11VvH5Al38ZWqylYZ6aXNcuwJg"
                     }
                 }
                 );
@@ -23,7 +23,7 @@ const Featured = ({type,setGenre}) => {
         }
         getRandomContent();
     },[type]);
-    // console.log(content);
+    console.log(content);
     return (
         <div className="featured">
             {type && (
@@ -50,9 +50,9 @@ const Featured = ({type,setGenre}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src={content.img}/>
+            <img width="100%" src={content.img} alt={content.imgTitle}/>
             <div className="info">
-                <img src={content.imgTitle}/>
+                <img src={content.imgTitle} alt={content.imgTitle}/>
                 <span className="desc">
                     {content.desc}
                 </span>

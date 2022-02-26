@@ -5,8 +5,8 @@ import "./Watch.scss"
 import { Link } from 'react-router-dom';
 
 const Watch = () => {
-    const location = useLocation()
-    const movie = location.movie;
+    const state = useLocation();
+    console.log(state)
     return (
         <div className="watch">
             <Link to="/">
@@ -14,7 +14,7 @@ const Watch = () => {
                     <ArrowBackOutlined/>
                     Home
                 </div>
-                <video className="video" autoPlay progress controls src={movie?.video}/>
+                <video className="video" autoPlay progress controls src=""/>
             </Link>
         </div>
     )

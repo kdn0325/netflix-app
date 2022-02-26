@@ -8,7 +8,7 @@ export default function NewProduct() {
   const [movie,setMovie] = useState(null);
   const [img,setImg] = useState(null);
   const [imgTitle,setImgTitle] = useState(null);
-  const [imgSm,setImgSm] = useState(null);
+  const [imgsm,setImgSm] = useState(null);
   const [trailer,setTrailer] = useState(null);
   const [video,setVideo] = useState(null);
   const [uploaded,setUploaded] = useState(0);
@@ -40,7 +40,7 @@ export default function NewProduct() {
     upload([
       {file:img,label: "img"},
       {file:imgTitle,label: "imgTitle"},
-      {file:imgSm,label: "imgsm"},
+      {file:imgsm,label: "imgsm"},
       {file:trailer,label: "trailer"},
       {file:video,label: "video"},
     ])

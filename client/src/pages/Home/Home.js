@@ -16,10 +16,10 @@ const Home = ({type}) => {
                     `lists${type ? "?type="+type: ""}${genre ? "&genre="+ genre : ""}`,
                     {
                         headers:{
-                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGI3NGIyNjFlMzgwYTM5YWZjZDI0MyIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NDk0MDk5NCwiZXhwIjoxNjQ1MzcyOTk0fQ.AFxXuO7HRup2w4RgUxOXF9kKFCtnJUCu0r0OsHX0Fr4"
-                        }
+                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTlkMzBkNDkzNGY2ZThlMTRjODcyZCIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTg1OTYxNSwiZXhwIjoxNjQ2MjkxNjE1fQ.Q4fv1xlxme-0JzHfE11VvH5Al38ZWqylYZ6aXNcuwJg"
+                        },
                     }
-                )
+                );
                 setLists(res.data)
             }catch(err){
                 console.log(err);
@@ -31,8 +31,8 @@ const Home = ({type}) => {
         <div className="home">
             <Navbar/>
             <Featured type={type} setGenre={setGenre}/>
-            {lists.map((list)=>(
-                <List list={list}/>
+            {lists.map((list,index)=>(
+                <List key={index} list={list}/>
             ))}
         </div>
     );

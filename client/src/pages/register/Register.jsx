@@ -1,16 +1,27 @@
+import { axios } from 'axios';
 import React,{useState,useRef} from 'react'
 import "./Register.scss"
+import {useNavigate} from "react-router-dom"
 
 const Register = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
+    const [username,setUsername]=useState("");
     const emailRef =useRef();
     const passwordRef =useRef();
+    const usernameRef =useRef();
+    const navigate = useNavigate();
     const handleStart =()=>{
         setEmail(emailRef.current.value)
     }
-    const handleFinish =()=>{
-        setEmail(passwordRef.current.value)
+    const handleFinish = async (e)=>{
+        e.preventDefalut();
+        setPassword(passwordRef.current.value)
+        setUsername(usernameRef.current.value)
+        try{
+            await axios.post("auth/register", {email,username,password});
+            navigate("/login");
+        }catch(err){}
     }
     return (
         <div className="register">
