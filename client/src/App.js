@@ -10,9 +10,8 @@ import { AuthContext } from './AuthContext/AuthContext';
 
 function App() {
     const {user} = useContext(AuthContext);
-    // const user = true
-  return (
-  <Router>
+    return (
+    <Router>
         <Switch>
             <Route exact path="/"> {user ? <Home/> : <Redirect to="/register"/>}</Route>
             <Route path="/register">{!user ? <Register/> : <Redirect to="/"/>}</Route>

@@ -40,5 +40,5 @@
   color: white;
   font-weight: 600;
   cursor: pointer;
-  align-items: center;
+  align-self: center;
 }

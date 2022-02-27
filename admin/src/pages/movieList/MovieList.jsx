@@ -1,10 +1,10 @@
-import "./MovieList.css";
+import "./movieList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
-import { MovieContext } from "../../context/MovieContext/MovieContext";
-import { deleteMovie, getMovies } from "../../context/MovieContext/apiCalls";
+import { MovieContext } from "../../context/movieContext/MovieContext";
+import { deleteMovie, getMovies } from "../../context/movieContext/apiCalls";
 
 export default function MovieList() {
   const { movies, dispatch } = useContext(MovieContext);
@@ -44,10 +44,15 @@ export default function MovieList() {
       renderCell: (params) => {
         return (
           <>
-            <Link to={{ pathname: "/movie/" + params.row._id, movie: params.row}}>
+            <Link
+              to={{ pathname: "/movie/" + params.row._id, movie: params.row }}
+            >
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline className="productListDelete" onClick={() => handleDelete(params.row._id)}/>
+            <DeleteOutline
+              className="productListDelete"
+              onClick={() => handleDelete(params.row._id)}
+            />
           </>
         );
       },
@@ -56,7 +61,13 @@ export default function MovieList() {
 
   return (
     <div className="productList">
-      <DataGrid rows={movies} disableSelectionOnClick columns={columns} pageSize={8} checkboxSelection getRowId={(r) => r._id}
+      <DataGrid
+        rows={movies}
+        disableSelectionOnClick
+        columns={columns}
+        pageSize={8}
+        checkboxSelection
+        getRowId={(r) => r._id}
       />
     </div>
   );

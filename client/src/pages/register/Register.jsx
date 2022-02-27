@@ -3,26 +3,28 @@ import React,{useState,useRef} from 'react'
 import "./Register.scss"
 import {useHistory} from "react-router-dom"
 
-const Register = () => {
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
-    const [username,setUsername]=useState("");
-    const emailRef =useRef();
-    const passwordRef =useRef();
-    const usernameRef =useRef();
+export default function Register(){
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
     const history = useHistory();
-    const handleStart =()=>{
-        setEmail(emailRef.current.value)
-    }
-    const handleFinish = async (e)=>{
-        e.preventDefalut();
-        setPassword(passwordRef.current.value)
-        setUsername(usernameRef.current.value)
+  
+    const emailRef = useRef();
+    const passwordRef = useRef();
+    const usernameRef = useRef();
+  
+    const handleStart = () => {
+      setEmail(emailRef.current.value);
+    };
+    const handleFinish = async (e) => {
+        e.preventDefault();
+        setUsername(usernameRef.current.value);
+        setPassword(passwordRef.current.value);
         try{
             await axios.post("auth/register", {email,username,password});
             history.push("/login");
-        }catch(err){}
-    }
+        }catch (err) {}
+    };
     return (
         <div className="register">
            <div className="top">
@@ -42,6 +44,7 @@ const Register = () => {
                 </div>
                 ) : (
                 <form className="input">
+                    <input type="username" placeholder="이름" ref={usernameRef}/>
                     <input type="password" placeholder="비밀번호" ref={passwordRef}/>
                     <button className="registerButton" onClick={handleFinish}>시작하기</button>
                 </form>
@@ -51,4 +54,4 @@ const Register = () => {
     )
 }
 
-export default Register
+
