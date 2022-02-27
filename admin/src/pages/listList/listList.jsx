@@ -31,15 +31,10 @@ export default function List() {
       renderCell: (params) => {
         return (
           <>
-            <Link
-              to={{ pathname: "/list/" + params.row._id,list:params.row}}
-            >
+            <Link to={{ pathname: "/list/" + params.row._id, list:params.row}}>
               <button className="productListEdit">Edit</button>
             </Link>
-            <DeleteOutline
-              className="productListDelete"
-              onClick={() => handleDelete(params.row._id)}
-            />
+            <DeleteOutline className="productListDelete" onClick={() => handleDelete(params.row._id)}/>
           </>
         );
       },
@@ -48,13 +43,7 @@ export default function List() {
 
   return (
     <div className="productList">
-      <DataGrid
-        rows={lists}
-        disableSelectionOnClick
-        columns={columns}
-        pageSize={8}
-        checkboxSelection
-        getRowId={(r) => r._id}
+      <DataGrid rows={lists} disableSelectionOnClick columns={columns} pageSize={8} checkboxSelection getRowId={(row) => row._id}
       />
     </div>
   );

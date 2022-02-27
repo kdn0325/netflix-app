@@ -26,7 +26,6 @@ const Login = () => {
                     <button className="loginButton" onClick={handleLogin}>로그인</button>
                     <span>Netflix 회원이 아닌가요? <b>지금 가입하세요.</b></span>
                     <small>이 페이지는 Google reCAPTCHA의 보호를 받아 사용자가 로봇이 아님을 확인합니다. <b>자세히 알아보기</b></small>
-
                 </form>
             </div>
         </div>

@@ -44,7 +44,7 @@ const MovieReducer = (state,action) =>{
         };
         case "UPLOAD_MOVIES_SUCCESS":
             return {
-                movies:state.movies.map(movie=>movie._id===action.payload._id && action.payload),
+                movies:state.movies.map((movie)=>movie._id===action.payload._id && action.payload),
                 isFetching:false,
                 error:false,
         };
@@ -54,19 +54,19 @@ const MovieReducer = (state,action) =>{
                 isFetching:false,
                 error:true,
         };
-        case "DELETE_MOVIES_START":
+        case "DELETE_MOVIE_START":
             return {
                 ...state,
                 isFetching:true,
                 error:false,
         };
-        case "DELETE_MOVIES_SUCCESS":
+        case "DELETE_MOVIE_SUCCESS":
             return {
                 movies:[state.movies.filter((movie)=>movie._id !== action.payload)],
                 isFetching:false,
                 error:false,
         };
-        case "DELETE_MOVIES_FAILURE":
+        case "DELETE_MOVIE_FAILURE":
             return {
                 ...state,
                 isFetching:false,

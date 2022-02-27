@@ -2,7 +2,7 @@ import { useState,useContext } from "react";
 import { createMovie } from "../../context/MovieContext/apiCalls";
 import { MovieContext } from "../../context/MovieContext/MovieContext";
 import storage from "../../firebase";
-import "./newProduct.css";
+import "./newMovie.css";
 
 export default function NewProduct() {
   const [movie,setMovie] = useState(null);

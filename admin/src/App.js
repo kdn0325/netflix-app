@@ -6,9 +6,9 @@ import { BrowserRouter as Router, Switch, Route,Redirect } from "react-router-do
 import UserList from "./pages/userList/UserList";
 import User from "./pages/user/User";
 import NewUser from "./pages/newUser/NewUser";
-import ProductList from "./pages/productList/ProductList";
-import Product from "./pages/product/Product";
-import NewProduct from "./pages/newProduct/NewProduct";
+import MovieList from "./pages/movieList/MovieList";
+import Movie from "./pages/movie/Movie";
+import NewMovie from "./pages/newMovie/newMovie";
 import Login from "./pages/login/Login";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext/AuthContext";
@@ -27,40 +27,40 @@ function App() {
         </Route>
         {user &&
         <>
-      <Topbar/>
-      <div className="container">
-        <Sidebar />
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/users">
-            <UserList />
-          </Route>
-          <Route path="/user/:userId">
-            <User />
-          </Route>
-          <Route path="/newUser">
-            <NewUser />
-          </Route>
-          <Route path="/movies">
-            <ProductList />
-          </Route>
-          <Route path="/product/:productId">
-            <Product />
-          </Route>
-          <Route path="/newproduct">
-            <NewProduct />
-          </Route>
-          <Route path="/lists">
-            <ListList/>
-          </Route>
-          <Route path="/list/:listId">
-            <List/>
-          </Route>
-          <Route path="/newlist">
-            <NewList/>
-          </Route>
-      </div>
+          <Topbar/>
+          <div className="container">
+              <Sidebar/>
+              <Route exact path="/">
+                <Home/>
+              </Route>
+              <Route path="/users">
+                <UserList/>
+              </Route>
+              <Route path="/user/:userId">
+                <User/>
+              </Route>
+              <Route path="/newUser">
+                <NewUser/>
+              </Route>
+              <Route path="/movies">
+                <MovieList/>
+              </Route>
+              <Route path="/movie/:movieId">
+                <Movie/>
+              </Route>
+              <Route path="/newmovie">
+                <NewMovie/>
+              </Route>
+              <Route path="/lists">
+                <ListList/>
+              </Route>
+              <Route path="/list/:listId">
+                <List/>
+              </Route>
+              <Route path="/newlist">
+                <NewList/>
+              </Route>
+          </div>
       </>
       }
         </Switch>

@@ -16,7 +16,7 @@ const Home = ({type}) => {
                     `lists${type ? "?type="+type: ""}${genre ? "&genre="+ genre : ""}`,
                     {
                         headers:{
-                            token:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTlkMzBkNDkzNGY2ZThlMTRjODcyZCIsImlzQWRtaW4iOiJmYWxzZSIsImlhdCI6MTY0NTg1OTYxNSwiZXhwIjoxNjQ2MjkxNjE1fQ.Q4fv1xlxme-0JzHfE11VvH5Al38ZWqylYZ6aXNcuwJg"
+                            token:"Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
                         },
                     }
                 );

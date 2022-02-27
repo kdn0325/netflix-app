@@ -9,8 +9,8 @@ import { AuthContext } from './AuthContext/AuthContext';
 
 
 function App() {
-    // const {user} = useContext(AuthContext);
-    const user = true
+    const {user} = useContext(AuthContext);
+    // const user = true
   return (
   <Router>
         <Switch>

@@ -29,12 +29,12 @@ export const updateMovieFailure = ()=>({
     type:"UPDATE_MOVIES_FAILURE",
 });
 export const deleteMovieStart = ()=>({
-    type:"DELETE_MOVIES_START",
+    type:"DELETE_MOVIE_START",
 });
 export const deleteMovieSuccess = (id)=>({
-    type:"DELETE_MOVIES_SUCCESS",
+    type:"DELETE_MOVIE_SUCCESS",
     payload : id,
 });
 export const deleteMovieFailure = ()=>({
-    type:"DELETE_MOVIES_FAILURE",
+    type:"DELETE_MOVIE_FAILURE",
 });
