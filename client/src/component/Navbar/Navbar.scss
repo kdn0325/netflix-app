@@ -27,6 +27,7 @@
       img {
         height: 25px;
         margin-right: 40px;
+        cursor: pointer;
 
         @include mobile {
           display: none;

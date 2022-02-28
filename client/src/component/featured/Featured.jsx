@@ -50,9 +50,9 @@ const Featured = ({type,setGenre}) => {
                     </select>
                 </div>
             )}
-            <img width="100%" src={content.img} alt={content.imgTitle}/>
+            <video width="100%" src={content.video} alt={content.title} autoPlay/>
             <div className="info">
-                <img src={content.imgTitle} alt={content.imgTitle}/>
+                <img src={content.imgsm} alt={content.imgTitle}/>
                 <span className="desc">
                     {content.desc}
                 </span>
