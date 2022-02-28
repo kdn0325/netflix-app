@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosInstance from "../../config";
 import { useRef } from "react";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -22,7 +22,7 @@ export default function Register() {
     setPassword(passwordRef.current.value);
     setUsername(usernameRef.current.value);
     try {
-      await axios.post("auth/register", { email,username, password });
+      await axiosInstance.post("auth/register", { email,username, password });
       history.push("/login");
     } catch (err) {}
   };

@@ -1,5 +1,5 @@
 import { PlayArrow,Add, ThumbUpAltOutlined,ThumbDownOutlined} from '@material-ui/icons';
-import axios from 'axios';
+import axiosInstance from '../../config';
 import React,{useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import "./ListItem.scss";
@@ -12,7 +12,7 @@ const ListItem = ({index,item}) => {
     let isCleanup = true;
     const getMovie = async () => {
       try {
-        const res = await axios.get("/movies/find/" + item, {
+        const res = await axiosInstance.get("/movies/find/" + item, {
           headers: {
             token:
             "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
